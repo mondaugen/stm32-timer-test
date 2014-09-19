@@ -3,7 +3,7 @@
 
 DEBUG_BUILD=1
 STM_CHIP_SET=STM32F429_439xx
-STM_DRIVER_PATH = $(HOME)/Documents/archives/STM32F4xx_DSP_StdPeriph_Lib_V1.3.0/Libraries/STM32F4xx_StdPeriph_Driver
+STM_DRIVER_PATH = $(HOME)/Pedals/lib/STM32F4xx_DSP_StdPeriph_Lib_V1.3.0/Libraries/STM32F4xx_StdPeriph_Driver
 STM_DRIVER_HDRS_STD = stm32f4xx_adc.h \
 					  stm32f4xx_crc.h \
 					  stm32f4xx_dbgmcu.h \
@@ -65,7 +65,7 @@ STM_DRIVER_OBJS = $(STM_DRIVER_SRCS:$(STM_DRIVER_PATH)/src/%.c=objs/%.o)
 STM_DRIVER_INC  = $(STM_DRIVER_PATH)/inc
 STM_DRIVER_DEP  = inc/stm32f4xx_conf.h inc/stm32f4xx.h $(wildcard $(STM_DRIVER_INC)*.h)
 
-CMSIS_PATH = $(HOME)/Documents/archives/CMSIS
+CMSIS_PATH = $(HOME)/Pedals/lib/CMSIS
 
 PROJ_INC_PATH = inc
 
@@ -95,7 +95,7 @@ CFLAGS += $(foreach def,$(DEFS),-D$(def))
 
 LDSCRIPT = STM32F429ZI_FLASH.ld
 LDFLAGS = -T$(LDSCRIPT) -Xlinker
-ifeq ($(DEBUG_BUILD),1)
+ifeq ($(DEBUG_BUILD),0)
 	LDFLAGS += --gc-sections
 endif
 
